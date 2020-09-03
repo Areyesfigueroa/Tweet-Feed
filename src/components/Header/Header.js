@@ -9,7 +9,7 @@ import logo from '../../assets/images/twitter-logo.png';
 
 const header = () => {
     return (
-        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+        <Navbar collapseOnSelect style={{ backgroundColor: "rgba(1,1,1,0)" }} fixed="top" expand="lg" variant="dark">
             <Navbar.Brand href="#home">
                     <Image style={{height: "50px"}} rounded src={logo} alt="logo"/>
             </Navbar.Brand>

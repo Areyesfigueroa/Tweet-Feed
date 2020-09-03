@@ -1,0 +1,21 @@
+.SplashPage {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    color: black;
+}
+
+.title {
+    margin-bottom: 30px;
+    color: var(--darkWhite);
+}
+
+.content {
+    background-color: var(--lightGreen);
+    border-radius: 3px;
+    padding: 20px;
+    margin: 0 10px;
+}
