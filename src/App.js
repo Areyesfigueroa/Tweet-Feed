@@ -4,11 +4,15 @@ import './App.css';
 import Header from './components/Header/Header';
 import SplashPage from './components/SplashPage/SplashPage';
 
+import { Route, Switch } from "react-router-dom";
+
 function App() {
   return (
     <div className="App">
       <Header />
-      <SplashPage />
+      <Switch>
+        <Route path="/" component={SplashPage}/>
+      </Switch>
     </div>
   );
 }

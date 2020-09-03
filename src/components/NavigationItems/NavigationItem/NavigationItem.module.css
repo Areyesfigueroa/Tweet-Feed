@@ -1,0 +1,16 @@
+.NavigationItem {
+    list-style-type: none;
+}
+
+.NavigationItem a {
+    color: var(--lightWhite);
+    text-decoration: none;
+    padding-bottom: 5px;
+    border: none;
+    transition: border .1s;
+}
+
+.NavigationItem .active {
+    border-bottom: 3px solid var(--middleGreen);
+    font-weight: bold;
+}
