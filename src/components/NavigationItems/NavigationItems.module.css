@@ -12,5 +12,7 @@
 @media(max-width: 991px) {
     .NavigationItems {
         flex-direction: column;
+        justify-content: center;
+        width: 100%;
     }
 }

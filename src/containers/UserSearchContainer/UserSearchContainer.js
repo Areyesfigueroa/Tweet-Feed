@@ -1,15 +1,13 @@
 import React from 'react';
-import Searchbar from '../../components/Searchbar/Searchbar';
-import Background from '../../components/Background/Background';
-import splashBG from '../../assets/images/splash-bg.jpg';
-
+import SearchbarContainer from '../SearchbarContainer/SearchbarContainer';
 
 const UserSearchContainer = () => {
-
+    const handleSearch = (data) => {
+        console.log(data);
+    }
     return (
         <div>
-            <Background imgSrc={splashBG} shadowOpacity={0.5}/>
-            <Searchbar />
+            <SearchbarContainer search={handleSearch}/>
         </div>
     );
 };

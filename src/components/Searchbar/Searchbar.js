@@ -4,7 +4,7 @@ import Button from '../Button/Button';
 import FormControl from 'react-bootstrap/FormControl';
 import classes from './Searchbar.module.css';
 
-const searchbar = () => {
+const searchbar = (props) => {
     const btnBorderRadiusStyle = {
         borderTopRightRadius: "5px",
         borderBottomRightRadius: "5px"
@@ -13,13 +13,14 @@ const searchbar = () => {
         <div className={classes.Searchbar}>
             <InputGroup>
                 <FormControl
+                    ref={props.reference}
                     placeholder="Search..."
                     aria-label="Search Input"
                     aria-describedby="search-input"
                 />
                 <InputGroup.Append>
-                    <Button>Search By User</Button>
-                    <Button style={btnBorderRadiusStyle}>Search By Topic</Button>
+                    <Button click={props.userSearch}>Search By User</Button>
+                    <Button click={props.contentSearch} style={btnBorderRadiusStyle}>Search By Content</Button>
                 </InputGroup.Append>
             </InputGroup>
         </div>
