@@ -1,7 +1,5 @@
 import React from 'react';
 import classes from './SplashPage.module.css';
-import Background from '../Background/Background';
-import splashBG from '../../assets/images/splash-bg.jpg';
 
 
 const splashPage = () => {
@@ -15,8 +13,6 @@ const splashPage = () => {
                     <p>You can also select from my recommended list of Twitter users to fetch a random tweet. </p>
                 </div>
             </div>
-
-            <Background imgSrc={splashBG} shadowOpacity={0.5}/>
         </div>
     );
 };

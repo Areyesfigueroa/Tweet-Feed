@@ -1,0 +1,22 @@
+.Button {
+    color: var(--lightWhite);
+    border-radius: 1px;
+    padding: 0 10px;
+    outline: none;
+}
+
+.Button:focus {
+    outline-color: #068558;
+}
+
+.default {
+    background-color: var(--darkGreen);
+    border: 1px solid var(--darkGreen);
+}
+
+.default:hover,
+.default:active,
+.defualt:visited {
+    background-color: #068558;
+    border: 1px solid #068558;
+}

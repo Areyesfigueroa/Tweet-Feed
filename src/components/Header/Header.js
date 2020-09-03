@@ -9,7 +9,7 @@ import NavigationItem from '../NavigationItems/NavigationItem/NavigationItem';
 
 const header = () => {
     return (
-        <Navbar collapseOnSelect style={{ backgroundColor: "rgba(1,1,1,0)" }} fixed="top" expand="lg" variant="dark">
+        <Navbar collapseOnSelect style={{ backgroundColor: "rgba(1,1,1,0)" }} expand="lg" variant="dark">
             <NavigationItem link="/home">
                 <Image style={{height: "50px"}} rounded src={logo} alt="logo"/>
             </NavigationItem>
