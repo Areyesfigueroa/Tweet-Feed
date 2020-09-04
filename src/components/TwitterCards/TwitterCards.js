@@ -10,9 +10,11 @@ const TwitterCards = (props) => {
                 img={props.data.image}
                 url={props.data.url}
                 content={props.data.content}
-                date={props.data.date}
                 hearts={props.data.hearts}
-                retweet={props.data.retweets}/>
+                retweet={props.data.retweets}
+                date={props.data.date}
+                time={props.data.time}
+                location={props.data.location}/>
         </div>
     );
 };

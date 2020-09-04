@@ -1,7 +1,10 @@
 .TwitterCard {
     width: 100%;
-    max-width: 500px;
+    max-width: 600px;
     margin: 10px 100px;
     color: black;
+    border: 1px solid var(--lightWhite);
+    border-radius: 5px;
     background-color: var(--lightWhite);
+    padding: 4px;
 }

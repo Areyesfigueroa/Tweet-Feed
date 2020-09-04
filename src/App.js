@@ -13,7 +13,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Background imgSrc={splashBG} shadowOpacity={0.5} />
+      <Background imgSrc={splashBG} shadowOpacity={0.1} />
 
       <Switch>
         <Route path='/user-search' component={UserSearchContainer}/>
