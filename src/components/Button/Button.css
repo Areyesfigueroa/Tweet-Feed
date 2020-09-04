@@ -1,6 +1,5 @@
 .Button {
     color: var(--lightWhite);
-    border-radius: 1px;
     padding: 0 10px;
     outline: none;
 }
@@ -12,6 +11,7 @@
 .default {
     background-color: var(--darkGreen);
     border: 1px solid var(--darkGreen);
+    border-radius: 1px;
 }
 
 .default:hover,
@@ -19,4 +19,12 @@
 .defualt:visited {
     background-color: #04583b;
     border: 1px solid #04583b;
+}
+
+.scrollToTop {
+    background-color: var(--darkGreen);
+    border: 1px solid var(--darkGreen);
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
 }

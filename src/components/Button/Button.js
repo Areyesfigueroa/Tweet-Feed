@@ -1,10 +1,10 @@
 import React from 'react';
-import classes from './Button.module.css';
+import './Button.css';
 
 const Button = (props) => {
     return (
         <button 
-        className={`${classes.Button} ${props.variant ? props.variant: classes.default}`}
+        className={`Button ${props.variant ? props.variant: "default"}`}
         style={props.style}
         onClick={props.click}>
             {props.children}
