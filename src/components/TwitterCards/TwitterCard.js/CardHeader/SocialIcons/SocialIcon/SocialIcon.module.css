@@ -1,0 +1,12 @@
+.SocialIcon {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.SocialIcon img {
+    width: 25px;
+    height: 25px;
+    margin: 5px 10px;
+}

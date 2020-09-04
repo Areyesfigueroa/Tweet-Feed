@@ -1,0 +1,25 @@
+.Profile {
+    display: flex;
+    flex-direction: row;
+
+    width: auto;
+    height: 100%;
+}
+
+.Profile img {
+    padding: 10px;
+    width: 70px;
+    height: 70px;
+}
+
+.profileText {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.profileText div {
+    margin: 5px;
+}
