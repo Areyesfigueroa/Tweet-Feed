@@ -6,7 +6,7 @@ import CardFooter from './CardFooter/CardFooter';
 
 const TwitterCard = (props) => {
     return (
-        <div className={classes.TwitterCard}>
+        <div className={classes.TwitterCard} style={props.style}>
             <CardHeader 
                 img={props.img} 
                 name={props.name} 

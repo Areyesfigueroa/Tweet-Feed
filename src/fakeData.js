@@ -20,7 +20,7 @@ const fetchData = async (count) => {
                 arr.push({id: i, ...dummyData});
             }
             resolve(arr);
-        }, 3000);
+        }, 1000);
     });
 }
 

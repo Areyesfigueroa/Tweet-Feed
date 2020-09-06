@@ -3,7 +3,6 @@ import classes from './UserProfileCard.module.css';
 import Image from 'react-bootstrap/Image';
 
 const userProfileCard = (props) => {
-    console.log(props);
     return (
         <div className={classes.UserProfileCard}>
             <div>
