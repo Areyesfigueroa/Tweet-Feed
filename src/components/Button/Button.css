@@ -28,3 +28,13 @@
     height: 65px;
     border-radius: 50%;
 }
+
+.profile {
+    background-color: rgba(1,1,1,0);
+    border: none;
+    color: black;
+}
+
+.rounded {
+    border-radius: 5px;
+}

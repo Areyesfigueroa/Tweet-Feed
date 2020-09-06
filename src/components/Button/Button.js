@@ -2,9 +2,14 @@ import React from 'react';
 import './Button.css';
 
 const Button = (props) => {
+    const classes = [
+        "Button",
+        props.variant ? props.variant: "default", 
+        props.rounded ? "rounded": ""
+    ]
     return (
         <button 
-        className={`Button ${props.variant ? props.variant: "default"}`}
+        className={classes.join(' ')}
         style={props.style}
         onClick={props.click}>
             {props.children}

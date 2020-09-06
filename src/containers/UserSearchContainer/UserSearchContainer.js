@@ -24,7 +24,7 @@ const UserSearchContainer = () => {
             setLoading(false);
         });
 
-        return () => {
+        return function cleanup() {
             window.removeEventListener("scroll", onBottomReached);
         }
     }, []);

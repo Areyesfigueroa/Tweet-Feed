@@ -13,7 +13,7 @@ const header = () => {
             <NavigationItem link="/home">
                 <Image style={{height: "50px"}} rounded src={logo} alt="logo"/>
             </NavigationItem>
-            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+            <Navbar.Toggle aria-controls="responsive-navbar-nav" style={{backgroundColor: "var(--darkGreen)"}}/>
             <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end">
                 <NavigationItems />
             </Navbar.Collapse>

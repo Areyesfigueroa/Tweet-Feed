@@ -16,8 +16,8 @@ const fetchData = async (count) => {
     return new Promise((resolve) => {
         setTimeout(() => {
             let arr = [];
-            for (let i = 0; i <= count; i++) {
-                arr.push({...dummyData});
+            for (let i = 0; i < count; i++) {
+                arr.push({id: i, ...dummyData});
             }
             resolve(arr);
         }, 3000);
