@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 
-import Header from './components/Header/Header';
+import HeaderContainer from './containers/HeaderContainer/HeaderContainer';
 import Background from './components/Background/Background';
 import splashBG from "./assets/images/splash-bg.jpg";
 
@@ -13,7 +13,7 @@ import RandomTweetsContainer from './containers/RandomTweetsContainer/RandomTwee
 function App() {
   return (
     <div className="App">
-      <Header />
+      <HeaderContainer />
       <Background imgSrc={splashBG} shadowOpacity={0.1} style={{position: "fixed"}}/>
 
       <Switch>

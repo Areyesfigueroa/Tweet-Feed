@@ -5,6 +5,7 @@ import Button from '../../components/Button/Button';
 import { fetchData } from '../../fakeData';
 import ModalContainer from '../ModalContainer/ModalContainer';
 import UserProfileCardsLayout from '../../components/UserProfileCardsLayout/UserProfileCardsLayout';
+import Title from '../../components/Title/Title';
 
 const RandomTweetsContainer = () => {
 
@@ -45,16 +46,13 @@ const RandomTweetsContainer = () => {
     const handleRandomSelection = () => handleCardSelection(Math.floor((Math.random() * 5) + 0));
 
     return (
-        <div>
-
+        <div style={{margin: 'var(--pageMargin)'}}>
             <ModalContainer 
                 show={showModal} 
                 tweet={randomTweet} 
                 close={() => setShowModal(false)}/>
 
-            <h4 style={{margin: "50px 0 30px 0"}}>
-                Pick a user to view one of their randomly selected tweet.
-            </h4>
+            <Title>Select one of my recommended twitter users to view one of their randomly selected tweet</Title>
 
             {loading ? <LoadingSpinner /> : <UserProfileCardsLayout data={users} click={handleCardSelection}/>}
             

@@ -1,0 +1,11 @@
+.Title {
+    background-color: var(--middleGreen);
+    color: white;
+    padding: 20px;
+    width: 100%;
+    height: auto;
+    max-width: 700px;
+    margin: 40px auto;
+    border: 1px solid var(--middleGreen);
+    border-radius: 5px;
+}

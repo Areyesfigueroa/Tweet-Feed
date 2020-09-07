@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import SearchbarContainer from '../SearchbarContainer/SearchbarContainer';
 import ScrollToTopBtn from '../../components/ScrollToTopBtn/ScrollToTopBtn';
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
+import Title from '../../components/Title/Title';
 
 // TESTING
 import TwitterCards from '../../components/TwitterCards/TwitterCards';
@@ -41,8 +42,6 @@ const UserSearchContainer = () => {
         });
     }, [bottomReached])
 
-    
-
     const onBottomReached = () => {
         if((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
             console.log("Bottom Reached");
@@ -51,7 +50,8 @@ const UserSearchContainer = () => {
     }
 
     return (
-        <div>
+        <div style={{margin: 'var(--pageMargin)'}}>
+            <Title>Search tweets by user or content</Title>
             <SearchbarContainer search={setData}/>
             {data ? <TwitterCards data={data}/>: <LoadingSpinner /> }
 
