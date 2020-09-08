@@ -3,7 +3,7 @@
 }
 
 .NavigationItem a {
-    color: black;
+    color: var(--lightWhite);
     text-decoration: none;
     padding-bottom: 5px;
     border: none;

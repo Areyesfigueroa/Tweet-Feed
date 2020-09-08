@@ -8,9 +8,6 @@ const userProfileCard = (props) => {
             <div>
                 <Image src={props.img} alt="Profile" roundedCircle fluid/>
             </div>
-            <div>
-                {props.name}
-            </div>
         </div>
     );
 };

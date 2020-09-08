@@ -51,7 +51,7 @@ const UserSearchContainer = () => {
 
     return (
         <div style={{margin: 'var(--pageMargin)'}}>
-            <Title>Search tweets by user or content</Title>
+            <Title>Search Tweets By User Or Content</Title>
             <SearchbarContainer search={setData}/>
             {data ? <TwitterCards data={data}/>: <LoadingSpinner /> }
 

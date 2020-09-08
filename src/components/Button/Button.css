@@ -9,21 +9,25 @@
 }
 
 .default {
-    background-color: var(--darkGreen);
-    border: 1px solid var(--darkGreen);
+    background-color: var(--middleGreen);
+    border: 1px solid var(--middleGreen);
+
     border-radius: 1px;
 }
 
 .default:hover,
 .default:active,
-.defualt:visited {
-    background-color: #04583b;
-    border: 1px solid #04583b;
+.defualt:visited,
+.scrollToTop:hover,
+.scrollToTop:active,
+.scrollToTop:visited {
+    background-color: var(--lightGreen);
+    border: 1px solid var(--lightGreen);
 }
 
 .scrollToTop {
-    background-color: var(--darkGreen);
-    border: 1px solid var(--darkGreen);
+    background-color: var(--middleGreen);
+    border: 1px solid var(--middleGreen);
     width: 65px;
     height: 65px;
     border-radius: 50%;

@@ -22,9 +22,9 @@ const HeaderContainer = () => {
     const mediaQuery = (windowWidth) => {
         //MOBILE
         if(windowWidth <= 991) {
-            setStyle({backgroundColor: "var(--darkWhite)"});
+            setStyle({backgroundColor: "var(--lightGreen)"});
         } else if(windowWidth >= 992) {
-            setStyle({backgroundColor: "rgba(1,1,1,0)"});
+            setStyle({backgroundColor: "var(--lightGreen)"});
         }
     }
 

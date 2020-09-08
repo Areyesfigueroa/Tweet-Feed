@@ -1,14 +1,16 @@
 .App {
   text-align: center;
   color: black;
+  font-family: 'Lexend Deca', sans-serif;
 }
 
 :root {
   --lightWhite: #FBFDFC;
   --darkWhite: #F0F6F4;
-  --lightGreen: #B3E5D4;
-  --middleGreen: #649482;
-  --darkGreen: #046b47;
+  --lightGreen: #82ad95;
+  --middleGreen: #518e65;
+  --darkGreen: #2d6b47;
   
   --pageMargin: 0 50px;
 }
+

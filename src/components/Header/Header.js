@@ -5,13 +5,13 @@ import classes from './Header.module.css';
 import Navbar from 'react-bootstrap/Navbar';
 import Image from 'react-bootstrap/Image';
 
-import logo from '../../assets/images/twitter-logo.png';
+import logo from '../../assets/images/logo.png';
 import NavigationItems from '../NavigationItems/NavigationItems';
 import NavigationItem from '../NavigationItems/NavigationItem/NavigationItem';
 
 const header = (props) => {
     const hamburgerBtnStyle = {
-        backgroundColor: "var(--darkGreen)",
+        backgroundColor: "var(--middleGreen)",
         padding: "9px"
     }
     return (
