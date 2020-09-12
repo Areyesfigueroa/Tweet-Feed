@@ -1,17 +1,14 @@
 const express = require("express");
-const axios = require('axios');
-const path = require("path");
-
 const app = express();
+const path = require("path");
+const twitterapi = require('./twitterapi');
 
-//Serving react via express and node.js, You have to serve the build. 
+//Serving React Build via Express.js
 app.use('/', express.static(path.join(__dirname + "/client/build")));
 
-app.get("/swapi", (req, res) => {
-    axios.get("http://swapi.dev/api/people/").then(response => {
-        res.send(response.data.results);
-    })
-});
+//Twitter.
+app.get("/api", twitterapi.getTwitterToken);
+app.get("/api/search/:query/:type/:count", twitterapi.searchTweets);
 
 const port = 5003;
 app.listen(port, () => console.log(`Server started on port ${port}`));
