@@ -1,14 +1,20 @@
 const express = require("express");
 const app = express();
+const cors = require('cors');
 const path = require("path");
-const twitterapi = require('./twitterapi');
+const bodyParser = require("body-parser");
+
+
+//Middleware
+app.use(cors()); //what does this do?
+app.use(bodyParser.json()); //what does this do?
 
 //Serving React Build via Express.js
 app.use('/', express.static(path.join(__dirname + "/client/build")));
 
 //Twitter.
-app.get("/api", twitterapi.getTwitterToken);
-app.get("/api/search/:query/:type/:count", twitterapi.searchTweets);
+const searchRoute = require('./routes/searchRoutes');
+app.use("/api/search", searchRoute);
 
 const port = 5003;
 app.listen(port, () => console.log(`Server started on port ${port}`));
