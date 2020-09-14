@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 
 import HeaderContainer from './containers/HeaderContainer/HeaderContainer';
@@ -10,7 +10,20 @@ import SplashPage from './components/SplashPage/SplashPage';
 import UserSearchContainer from './containers/UserSearchContainer/UserSearchContainer';
 import RandomTweetsContainer from './containers/RandomTweetsContainer/RandomTweetsContainer';
 
+//TESTING
+import { fetchSearch } from './fakeData';
+
 function App() {
+
+  useEffect(() => {
+    fetchSearch('nasa', 'popular', 4)
+    .then(res => {
+      console.log("WORKING!!");
+      console.log(res);
+    })
+    .catch(error => console.log("App Component Error"));
+  }, [])
+
   return (
     <div className="App">
       <HeaderContainer />

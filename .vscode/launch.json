@@ -30,7 +30,7 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}/axios.js"
+            "program": "${workspaceFolder}/utils.js"
         }
     ]
 }
