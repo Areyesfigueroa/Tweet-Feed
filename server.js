@@ -16,5 +16,5 @@ app.use('/', express.static(path.join(__dirname + "/client/build")));
 const searchRoute = require('./routes/searchRoutes');
 app.use("/api/search", searchRoute);
 
-const port = 5003;
+const port = 5000;
 app.listen(port, () => console.log(`Server started on port ${port}`));

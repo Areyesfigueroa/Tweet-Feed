@@ -19,12 +19,12 @@ const formatSearchData = (data) => {
             retweets: el.retweet_count, 
             date: formattedDate, 
             time: formattedTime, 
-            location: el.place ? el.place: '' 
+            location: el.user.location ? el.user.location: '' 
         }
     });
 }
 
-exports.searchFilteredTweets = (request, response) => {
+exports.searchByContent = (request, response) => {
     const data = request.params;
     axios.get(`/1.1/search/tweets.json?q=${data.query}&result_type=${data.type}&count=${data.count}`)
     .then(res => {
@@ -32,7 +32,24 @@ exports.searchFilteredTweets = (request, response) => {
 
         response.json(data);
         response.send("Working!");
-    }).catch(() => response.send("Search Filtered Tweets Failed"));
+    }).catch(() => {
+        response.json({errorMsg: "Content not found"});
+        response.send("Search By Content Failed");
+    });
+}
+
+exports.searchByUser = (request, response) => {
+    const data = request.params;
+    axios.get(`/1.1/statuses/user_timeline.json?screen_name=${data.screenName}&count=${data.count}`)
+    .then(res => {
+        const data = formatSearchData(res.data);
+        
+        response.json(data);
+        response.send("Working!");
+    }).catch(() => {
+        response.json({errorMsg: "User not found."});
+        response.send("Search By User Name Failed");
+    });
 }
 
 exports.searchAllTweets = (request, response) => {
@@ -40,7 +57,9 @@ exports.searchAllTweets = (request, response) => {
     axios.get(`/1.1/search/tweets.json?q=${data.query}`)
     .then(res => {
         const data = formatSearchData(res.data.statuses);
+        
         response.json(data);
         response.send("Working!");
     }).catch(() => response.send("Search All Tweets Failed"));
 }
+

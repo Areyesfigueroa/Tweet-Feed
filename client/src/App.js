@@ -16,7 +16,7 @@ import { fetchSearch } from './fakeData';
 function App() {
 
   useEffect(() => {
-    fetchSearch('nasa', 'popular', 4)
+    fetchSearch('nasa', 'popular', 3)
     .then(res => {
       console.log("WORKING!!");
       console.log(res);
