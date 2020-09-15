@@ -14,9 +14,16 @@ const dummyData = {
     location: "Bronx, NY" //location = data.place
 }
 
-const fetchSearch = (search, type="popular", count=4) => {
+const fetchContentTweets = (search, type="popular", count=4) => {
+    return fetch(`/api/search/content/${search}/${type}/${count}`)
+    .then(res => res.json(res))
+    .catch(error => console.log("API Error"));
+}
+
+const fetchUserTweets = (screenName, count=4) => {
+    console.log(screenName);
     console.log(count);
-    return fetch(`/api/search/${search}/${type}/${count}`)
+    return fetch(`/api/search/user/${screenName}/${count}`)
     .then(res => res.json(res))
     .catch(error => console.log("API Error"));
 }
@@ -33,4 +40,4 @@ const fetchData = async (count) => {
     });
 }
 
-export { fetchData, fetchSearch };
+export { fetchData, fetchContentTweets, fetchUserTweets };

@@ -15,15 +15,6 @@ import { fetchSearch } from './fakeData';
 
 function App() {
 
-  useEffect(() => {
-    fetchSearch('nasa', 'popular', 3)
-    .then(res => {
-      console.log("WORKING!!");
-      console.log(res);
-    })
-    .catch(error => console.log("App Component Error"));
-  }, [])
-
   return (
     <div className="App">
       <HeaderContainer />
