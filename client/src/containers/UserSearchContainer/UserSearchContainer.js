@@ -68,7 +68,7 @@ const UserSearchContainer = () => {
 
         let newData = [...data];
         newData.push(...response.tweets.map((el) => el));
-        console.log(newData);
+
         setData(newData);
         setNextResultsURL(response.nextResultsURL);
         setBottomReached(false);
@@ -90,7 +90,7 @@ const UserSearchContainer = () => {
             {data ? <TwitterCards data={data}/>: null}
 
             {loading ? <LoadingSpinner/>: null}
-            {showStatusLog ? <p>No Data</p>: null}
+            {showStatusLog ? <p>No Data...:(</p>: null}
             
             <ScrollToTopBtn />
         </div>
