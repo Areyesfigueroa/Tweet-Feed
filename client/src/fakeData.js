@@ -14,15 +14,13 @@ const dummyData = {
     location: "Bronx, NY" //location = data.place
 }
 
-const fetchContentTweets = (search, type="popular", count=4) => {
-    return fetch(`/api/search/content/${search}/${type}/${count}`)
+const fetchContentTweets = (query, type="popular", count=5) => {
+    return fetch(`/api/search/content/${query}/${type}/${count}`)
     .then(res => res.json(res))
     .catch(error => console.log("API Error"));
 }
 
-const fetchUserTweets = (screenName, count=4) => {
-    console.log(screenName);
-    console.log(count);
+const fetchUserTweets = (screenName, count=5) => {
     return fetch(`/api/search/user/${screenName}/${count}`)
     .then(res => res.json(res))
     .catch(error => console.log("API Error"));

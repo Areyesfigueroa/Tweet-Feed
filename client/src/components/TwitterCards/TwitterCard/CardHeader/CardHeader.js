@@ -8,7 +8,7 @@ const cardHeader = (props) => {
     return (
         <div className={classes.CardHeader}>
             <Profile img={props.img} name={props.name} url={props.url} /> 
-            <SocialIcons hearts={100} retweets={100}/>
+            <SocialIcons hearts={props.hearts} retweets={props.retweets}/>
         </div>
     );
 };

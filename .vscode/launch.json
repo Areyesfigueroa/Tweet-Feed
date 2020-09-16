@@ -15,9 +15,10 @@
         },
         {
             "name": "Nodemon Debug",
-            "port": 5003,
+            "port": 5000,
             "restart": true,
             "request": "attach",
+            "processId": "${command:PickProcess}",
             "skipFiles": [
                 "<node_internals>/**"
             ],

@@ -5,15 +5,16 @@ import TwitterCard from './TwitterCard/TwitterCard';
 const TwitterCards = (props) => {
     return (
         <div className={classes.TwitterCards}>
-            {props.data.map((el, i) => (
+            {console.log(props.data)}
+            {props.data.map((el) => (
                 <TwitterCard 
-                    key={i}
+                    key={el.id}
                     name={el.name}
-                    img={el.image}
-                    url={el.url}
+                    img={el.profileImg}
+                    url={el.screenName}
                     content={el.content}
                     hearts={el.hearts}
-                    retweet={el.retweets}
+                    retweets={el.retweets}
                     date={el.date}
                     time={el.time}
                     location={el.location}/>

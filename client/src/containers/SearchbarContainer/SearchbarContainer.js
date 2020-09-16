@@ -8,20 +8,20 @@ const SearchbarContainer = (props) => {
 
     const handleSearchByContent = () => {
         console.log("Searching by Content");
-        fetchContentTweets(inputRef.current.value, 'popular', 3)
+        fetchContentTweets(inputRef.current.value)
         .then(res => {
           console.log(res);
-          props.search(res); //Pass in the search results
+          props.search(res.tweets); //Pass in the search results
         })
         .catch(error => console.log("Search by user Error"));
     }
 
     const handleSearchByUser = () => {
         console.log("Searching by User");
-        fetchUserTweets(inputRef.current.value, 3)
+        fetchUserTweets(inputRef.current.value)
         .then(res => {
           console.log(res);
-          props.search(res); //Pass in the search results
+          props.search(res.tweets); //Pass in the search results
         })
         .catch(error => console.log("Search by content Error"));
     }

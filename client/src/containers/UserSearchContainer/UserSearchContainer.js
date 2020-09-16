@@ -17,7 +17,6 @@ const UserSearchContainer = () => {
 
     useEffect(() => {
         window.addEventListener("scroll", onBottomReached);
-        console.log("THERE IS NO DATA");
 
         return function cleanup() {
             window.removeEventListener("scroll", onBottomReached);
