@@ -13,6 +13,7 @@ const UserSearchContainer = () => {
     const [data, setData]=useState([]);
     const [searchType, setSearchType]=useState('');
     const [nextResultsURL, setNextResultsURL]=useState(null);
+    const [showStatusLog, setShowStatusLog]=useState(false);
     const [loading, setLoading]=useState(false);
     const [bottomReached, setBottomReached]=useState(false);
     
@@ -30,31 +31,24 @@ const UserSearchContainer = () => {
     }, []);
 
     useEffect(() => {
-        
-        if(searchType === SEARCH_TYPES.CONTENT) {
-            setLoading(true);
-            fetchContentNextResults(nextResultsURL).then((response) => {
-                console.log(response);
-                // let newData = [...data];
-                // response.forEach((el) => newData.push(el));
-    
-                // setData(newData);
-                setLoading(false);
-                // setBottomReached(false);
-            });
-        } else if(searchType === SEARCH_TYPES.USER) {
-            setLoading(true);
-            fetchUserNextResults(nextResultsURL).then((response) => {
-                console.log(response);
-                // let newData = [...data];
-                // response.forEach((el) => newData.push(el));
-    
-                // setData(newData);
-                setLoading(false);
-                // setBottomReached(false);
-            });
-        } else {
-            console.log("No search type");
+
+        if(loading || showStatusLog) return;
+
+        switch(searchType) {
+            case SEARCH_TYPES.CONTENT:
+                setLoading(true);
+                fetchContentNextResults(nextResultsURL).then((response) => {
+                    handleNextResults(response);
+                });
+                break;
+            case SEARCH_TYPES.USER: 
+                setLoading(true);
+                fetchUserNextResults(nextResultsURL).then((response) => {
+                    handleNextResults(response);
+                });
+                break;
+            default: 
+                console.log("No search type");
         }
     }, [bottomReached])
 
@@ -65,10 +59,28 @@ const UserSearchContainer = () => {
         }
     }
 
+    const handleNextResults = (response) => {
+        if(response.error) {
+            setShowStatusLog(true);
+            setLoading(false);
+            return;
+        }
+
+        let newData = [...data];
+        newData.push(...response.tweets.map((el) => el));
+        console.log(newData);
+        setData(newData);
+        setNextResultsURL(response.nextResultsURL);
+        setBottomReached(false);
+        setLoading(false);
+    }
+
     const handleSearch = (data, searchType) => {
+        setShowStatusLog(false);
+        setBottomReached(false);
         setSearchType(searchType);
-        setData(data.tweets);
         setNextResultsURL(data.nextResultsURL);
+        setData(data.tweets);
     }
 
     return (
@@ -78,6 +90,7 @@ const UserSearchContainer = () => {
             {data ? <TwitterCards data={data}/>: null}
 
             {loading ? <LoadingSpinner/>: null}
+            {showStatusLog ? <p>No Data</p>: null}
             
             <ScrollToTopBtn />
         </div>

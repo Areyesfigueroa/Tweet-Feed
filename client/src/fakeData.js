@@ -31,21 +31,19 @@ const fetchContentTweets = (query, type="popular", count=5) => {
     .then(res => res.json(res))
     .catch(error => console.log("API Error"));
 }
-
 const fetchUserTweets = (screenName, count=5) => {
     return fetch(`/api/search/user/${screenName}/${count}`)
     .then(res => res.json(res))
     .catch(error => console.log("API Error"));
 }
 
-const fetchContentNextResults = (urlParams) => {
-    return fetch(`/api/search/nextContent/${urlParams}`)
+const fetchContentNextResults = (nextResultsURL) => {
+    return fetch(`/api/search/nextContent/${nextResultsURL}`)
     .then(res => res.json(res))
     .catch(error => console.log("API Error"));
 }
-
-const fetchUserNextResults = (urlParams) => {
-    return fetch(`/api/search/nextUser/${urlParams}`)
+const fetchUserNextResults = (nextResultsURL) => {
+    return fetch(`/api/search/nextUser/${nextResultsURL}`)
     .then(res => res.json(res))
     .catch(error => console.log("API Error"));
 }

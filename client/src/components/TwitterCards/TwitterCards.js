@@ -5,7 +5,6 @@ import TwitterCard from './TwitterCard/TwitterCard';
 const TwitterCards = (props) => {
     return (
         <div className={classes.TwitterCards}>
-            {console.log(props.data)}
             {props.data.map((el) => (
                 <TwitterCard 
                     key={el.id}

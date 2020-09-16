@@ -27,14 +27,14 @@ const formatTweetsData = (data) => {
 
 const parseContentData = (data) => {
     const tweets = formatTweetsData(data.statuses);
-    const nextResultsURL = data.search_metadata.next_results;
+    const nextResultsURL = data.search_metadata.next_results.substring(1); //remove ?
 
     return {tweets, nextResultsURL};
 }
 
 const parseUserData = (data) => {
     const continueFromID = data[data.length - 1].id;
-    const nextResultsURL = `?max_id=${continueFromID}&screen_name=${data[0].user.screen_name}&count=${data.length - 1}`;
+    const nextResultsURL = `max_id=${continueFromID}&screen_name=${data[0].user.screen_name}&count=${data.length}`;
 
     data.pop();
     const tweets = formatTweetsData(data);
@@ -48,9 +48,8 @@ exports.searchByContent = (request, response) => {
     axios.get(`/1.1/search/tweets.json?q=${data.query}&result_type=${data.type}&count=${data.count}`)
     .then(res => {
         response.json(parseContentData(res.data));
-    }).catch(() => {
-        response.json({errorMsg: "Content not found"});
-    });
+    }).catch((error) => response.json({error, message: "Data fetch failed"}));
+
 }
 exports.searchByUser = (request, response) => {
     const data = request.params;
@@ -59,25 +58,25 @@ exports.searchByUser = (request, response) => {
     axios.get(`/1.1/statuses/user_timeline.json?screen_name=${data.screenName}&count=${newCount}`)
     .then(res => {
         response.json(parseUserData(res.data));
-    }).catch(() => {
-        response.json({errorMsg: "User not found."});
-    });
+    }).catch((error) => response.json({error, message: "Data fetch failed"}));
 }
 
 //Search Next Results.
 exports.searchByContentNextResults = (request, response) => {
     const data = request.params;
-    axios.get(`/1.1/search/tweets.json${data.urlParams}`)
+
+    axios.get(`/1.1/search/tweets.json?${data.nextResultsURL}`)
     .then(res => {
         response.json(parseContentData(res.data));
-    }).catch(() => response.send("Search By Content Next Results Failed"));
+    }).catch((error) => response.json({error, message: "Data fetch failed"}));
 }
 exports.searchByUserNextResults = (request, response) => {
     const data = request.params;
-    axios.get(`/1.1/statuses/user_timeline.json${data.urlParams}`)
+
+    axios.get(`/1.1/statuses/user_timeline.json?${data.nextResultsURL}`)
     .then(res => {
         response.json(parseUserData(res.data));
-    }).catch(() => response.send("Search By User Next Results Failed"));
+    }).catch((error) => response.json({error, message: "Data fetch failed"}));
 }
 
 //For testing only. 
@@ -92,6 +91,5 @@ exports.searchAllTweets = (request, response) => {
         
         response.json(res.data);
         response.send("Working!");
-    }).catch(() => response.send("Search All Tweets Failed"));
+    }).catch((error) => response.json({error, message: "Data fetch failed"}));
 }
-
