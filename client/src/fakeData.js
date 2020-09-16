@@ -1,5 +1,5 @@
 import profileImg from './assets/images/profile.png';
-
+//FAKE DATA
 const dummyData = {
     //id: data.id
     name: "Aliel Reyes", //name = data.user.name
@@ -13,19 +13,6 @@ const dummyData = {
     time: "3:15PM", //time = data.created_at
     location: "Bronx, NY" //location = data.place
 }
-
-const fetchContentTweets = (query, type="popular", count=5) => {
-    return fetch(`/api/search/content/${query}/${type}/${count}`)
-    .then(res => res.json(res))
-    .catch(error => console.log("API Error"));
-}
-
-const fetchUserTweets = (screenName, count=5) => {
-    return fetch(`/api/search/user/${screenName}/${count}`)
-    .then(res => res.json(res))
-    .catch(error => console.log("API Error"));
-}
-
 const fetchData = async (count) => {
     return new Promise((resolve) => {
         setTimeout(() => {
@@ -38,4 +25,31 @@ const fetchData = async (count) => {
     });
 }
 
-export { fetchData, fetchContentTweets, fetchUserTweets };
+//Fetching from Express Internal API.
+const fetchContentTweets = (query, type="popular", count=5) => {
+    return fetch(`/api/search/content/${query}/${type}/${count}`)
+    .then(res => res.json(res))
+    .catch(error => console.log("API Error"));
+}
+
+const fetchUserTweets = (screenName, count=5) => {
+    return fetch(`/api/search/user/${screenName}/${count}`)
+    .then(res => res.json(res))
+    .catch(error => console.log("API Error"));
+}
+
+const fetchContentNextResults = (urlParams) => {
+    return fetch(`/api/search/nextContent/${urlParams}`)
+    .then(res => res.json(res))
+    .catch(error => console.log("API Error"));
+}
+
+const fetchUserNextResults = (urlParams) => {
+    return fetch(`/api/search/nextUser/${urlParams}`)
+    .then(res => res.json(res))
+    .catch(error => console.log("API Error"));
+}
+
+
+
+export { fetchData, fetchContentTweets, fetchUserTweets, fetchContentNextResults, fetchUserNextResults };

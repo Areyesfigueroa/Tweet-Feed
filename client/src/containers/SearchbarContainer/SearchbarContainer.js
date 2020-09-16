@@ -11,7 +11,7 @@ const SearchbarContainer = (props) => {
         fetchContentTweets(inputRef.current.value)
         .then(res => {
           console.log(res);
-          props.search(res.tweets); //Pass in the search results
+          props.search(res, props.searchTypes.CONTENT); //Pass in the search results
         })
         .catch(error => console.log("Search by user Error"));
     }
@@ -21,7 +21,7 @@ const SearchbarContainer = (props) => {
         fetchUserTweets(inputRef.current.value)
         .then(res => {
           console.log(res);
-          props.search(res.tweets); //Pass in the search results
+          props.search(res, props.searchTypes.USER); //Pass in the search results
         })
         .catch(error => console.log("Search by content Error"));
     }
