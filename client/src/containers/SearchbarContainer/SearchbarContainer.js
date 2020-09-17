@@ -6,6 +6,10 @@ import { fetchUserTweets, fetchContentTweets } from '../../fakeData';
 const SearchbarContainer = (props) => {
     const inputRef = useRef(null);
 
+    const formatSearchByUser = (word) => {
+        return word.trim().replace(' ', '').toLowerCase();
+    }
+
     const handleSearchByContent = () => {
         console.log("Searching by Content");
         fetchContentTweets(inputRef.current.value)
@@ -18,7 +22,7 @@ const SearchbarContainer = (props) => {
 
     const handleSearchByUser = () => {
         console.log("Searching by User");
-        fetchUserTweets(inputRef.current.value)
+        fetchUserTweets(formatSearchByUser(inputRef.current.value))
         .then(res => {
           console.log(res);
           props.search(res, props.searchTypes.USER); //Pass in the search results
