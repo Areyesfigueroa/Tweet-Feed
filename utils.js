@@ -1,10 +1,10 @@
-const date = require('date-and-time');
+String.prototype.replaceBetween = function(start, end, what) {
+    return this.substring(0, start) + what + this.substring(end);
+};
 
-const dateString = 'Sun Sep 13 10:10:36 +0000 2020';
+String.prototype.replaceAll = function(substr, newSubstr) {
+    const replace = substr;
+    const re = new RegExp(replace,"g");
 
-const dateObj = new Date(dateString);
-
-const formattedDate = date.format(dateObj, "M/D/YYYY");
-const formattedTime = date.format(dateObj, 'hh:mm A');
-console.log(formattedDate);
-console.log(formattedTime);
+    return this.replace(re, newSubstr);
+}

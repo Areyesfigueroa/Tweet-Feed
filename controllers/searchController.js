@@ -1,5 +1,6 @@
 const axios = require('../axios').getInstance();
 const date = require('date-and-time');
+const tweetParser = require('../tweetParser');
 
 //Helper Functions
 const formatTweetsData = (data) => {
@@ -15,7 +16,7 @@ const formatTweetsData = (data) => {
             name: el.user.name, 
             screenName: `@${el.user.screen_name}`, 
             profileImg: el.user.profile_image_url_https, 
-            content: el.full_text,
+            content: tweetParser.toHTML(el),
             hearts: el.favorite_count,
             retweets: el.retweet_count, 
             date: formattedDate, 
