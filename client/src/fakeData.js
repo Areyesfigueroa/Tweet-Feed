@@ -1,18 +1,18 @@
 import profileImg from './assets/images/profile.png';
-//FAKE DATA
-const dummyData = {
-    //id: data.id
-    name: "Aliel Reyes", //name = data.user.name
-    url: "@alielreyes", //screenName = data.user.screen_name
-    image: profileImg, //profileImg = data.user.profile_image_url_https
-    //content = data.text
-    content: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-    hearts: 10000, //hearts = data.favorite_count
-    retweets: 11000, //retweets = data.retweets
-    date: "09/16/1994", //date = data.created_at , will need to convert the date from Mon Sep 14 17:51:55 +0000 2020
-    time: "3:15PM", //time = data.created_at
-    location: "Bronx, NY" //location = data.place
-}
+// //FAKE DATA
+// const dummyData = {
+//     //id: data.id
+//     name: "Aliel Reyes", //name = data.user.name
+//     url: "@alielreyes", //screenName = data.user.screen_name
+//     image: profileImg, //profileImg = data.user.profile_image_url_https
+//     //content = data.text
+//     content: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+//     hearts: 10000, //hearts = data.favorite_count
+//     retweets: 11000, //retweets = data.retweets
+//     date: "09/16/1994", //date = data.created_at , will need to convert the date from Mon Sep 14 17:51:55 +0000 2020
+//     time: "3:15PM", //time = data.created_at
+//     location: "Bronx, NY" //location = data.place
+// }
 const fetchData = async (count) => {
     return new Promise((resolve) => {
         setTimeout(() => {

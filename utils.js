@@ -4,7 +4,7 @@ String.prototype.replaceBetween = function(start, end, what) {
 
 String.prototype.replaceAll = function(substr, newSubstr) {
     const replace = substr;
-    const re = new RegExp(replace,"g");
+    const re = new RegExp(replace,"gmi");
 
     return this.replace(re, newSubstr);
 }

@@ -260,7 +260,7 @@ const fakeData = {
 const parseAtSymbols = (text, screenName) => {
 
     //We've already parsed it. 
-    if (text.includes(`>@${screenName}<`)) return text;
+    if (text.includes(`>@${screenName}<`)) return text; //needs to be case insesitive.
 
     const url = `https://twitter.com/${screenName}`;
     const html = `<a href=${url}>@${screenName}</a>`;
@@ -285,15 +285,22 @@ const parseURLs = (text, url) => {
 const parseImgs = (text, displayedURL, url) => {
     if (text.includes(`src=${url}`)) return text;
 
-    const html = `<img src=${url} alt=${'twitter post'} />`;
+    const html = `
+    <div style="width: 100%; height: auto; max-height: 500px; text-align: center;">
+        <img style="max-width: 100%;max-height: 500px;" src=${url} alt=${'twitter post'} />
+    </div>
+    `;
 
     return text.replaceAll(displayedURL, html);
 }
 const appendVideo = (text, url) => {
     const html = `
-    <video controls width="468">
-        <source src=${url} type="video/mp4">
-    </video>`;
+    <div style="width: 100%; text-align: center;">
+        <video controls style="width: 100%; max-height: 500px;">
+            <source src=${url} type="video/mp4">
+        </video>
+    </div>
+    `;
 
     return text.concat(html);
 }
@@ -302,30 +309,34 @@ exports.toHTML = (data) => {
     let newContent = data.full_text;
 
     //@ Symbols
-    fakeData.entities.user_mentions.forEach((el) => {
+    data.entities.user_mentions.forEach((el) => {
         newContent = parseAtSymbols(newContent, el.screen_name);
     });
 
     //Hashtags
-    fakeData.entities.hashtags.forEach((el) => {
+    data.entities.hashtags.forEach((el) => {
         newContent = parseHashtags(newContent, el.text);
     });
 
     //URLs
-    fakeData.entities.urls.forEach((el) => {
+    data.entities.urls.forEach((el) => {
         newContent = parseURLs(newContent, el.url);
     });
 
     //Media
-    fakeData.extended_entities.media.forEach((el) => {
-        if (el.type === 'photo') {
-            newContent = parseImgs(newContent, el.url, el.media_url_https);
-        } else if (el.type === "video") {
-            newContent = parseURLs(newContent, el.url);
-            newContent = appendVideo(newContent, el.video_info.variants[3].url);
-        }
-    });
+    if(data.extended_entities) {
+        data.extended_entities.media.forEach((el) => {
+            if (el.type === 'photo') {
+                newContent = parseImgs(newContent, el.url, el.media_url_https);
+            } else if (el.type === "video") {
+                newContent = parseURLs(newContent, el.url);
+                newContent = appendVideo(newContent, el.video_info.variants[3].url);
+            }
+        });
+    }
 
     const html = `<p>${newContent}</p>`;
     return html;
 }
+
+// console.log(toHTML(fakeData));
