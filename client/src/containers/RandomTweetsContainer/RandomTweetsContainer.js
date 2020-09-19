@@ -2,7 +2,10 @@ import React, { useEffect, useState, Fragment } from 'react';
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
 import Button from '../../components/Button/Button';
 
-import { fetchData } from '../../fakeData';
+import { fetchData } from '../../https';
+import { fetchUserTweets } from '../../https';
+
+
 import ModalContainer from '../ModalContainer/ModalContainer';
 import UserProfileCardsLayout from '../../components/UserProfileCardsLayout/UserProfileCardsLayout';
 import Title from '../../components/Title/Title';
@@ -16,10 +19,13 @@ const RandomTweetsContainer = () => {
     const [showModal, setShowModal] = useState(false);
 
     useEffect(() => {
-        fetchData(5).then(response => {
-            setUsers(response);
-            setLoading(false);
-        });
+
+
+        setUsers(['spiderman, marvel, playstation, insomniac, rockstar']);
+        // fetchData(5).then(response => {
+        //     setUsers(response);
+        //     setLoading(false);
+        // });
     }, []);
 
     useEffect(() => {
@@ -27,6 +33,9 @@ const RandomTweetsContainer = () => {
         if(!userSelected) return;
 
         setShowModal(true);
+        // fetchRandomTweet.then(response => {
+        //     console.log(response);
+        // });
         fetchData(1).then(response => {
             setRandomTweet(response[0]);
         });

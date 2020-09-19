@@ -6,7 +6,7 @@ import Title from '../../components/Title/Title';
 
 // TESTING
 import TwitterCards from '../../components/TwitterCards/TwitterCards';
-import { fetchContentNextResults, fetchUserNextResults } from '../../fakeData';
+import { fetchContentNextResults, fetchUserNextResults } from '../../https';
 
 const UserSearchContainer = () => {
 

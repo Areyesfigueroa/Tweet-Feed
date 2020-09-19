@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import Searchbar from '../../components/Searchbar/Searchbar';
 
-import { fetchUserTweets, fetchContentTweets } from '../../fakeData';
+import { fetchUserTweets, fetchContentTweets } from '../../https';
 
 const SearchbarContainer = (props) => {
     const inputRef = useRef(null);
