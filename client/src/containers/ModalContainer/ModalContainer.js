@@ -8,11 +8,11 @@ const ModalContainer = (props) => {
         <TwitterCard 
             style={{margin: '0'}}
             name={props.tweet.name}
-            img={props.tweet.image}
-            url={props.tweet.url}
+            img={props.tweet.profileImg}
+            url={props.tweet.screenName}
             content={props.tweet.content}
             hearts={props.tweet.hearts}
-            retweet={props.tweet.retweets}
+            retweets={props.tweet.retweets}
             date={props.tweet.date}
             time={props.tweet.time}
             location={props.tweet.location}/>

@@ -6,7 +6,7 @@ import ModalContainer from '../ModalContainer/ModalContainer';
 import UserProfileCardsLayout from '../../components/UserProfileCardsLayout/UserProfileCardsLayout';
 import Title from '../../components/Title/Title';
 
-import { fetchUserProfiles, fetchData, fetchRandomTweetByUser } from '../../https';
+import { fetchUserProfiles, fetchRandomTweetByUser } from '../../https';
 
 const RandomTweetsContainer = () => {
 
@@ -17,8 +17,7 @@ const RandomTweetsContainer = () => {
     const [showModal, setShowModal] = useState(false);
 
     useEffect(() => {
-
-        const profiles = ['spiderman, marvel, playstation, insomniac, jlo'];
+        const profiles = ['spiderman, marvel, playstation, funhaus, jlo'];
         fetchUserProfiles(profiles).then(response => {
             setUsers(response);
             setLoading(false);
@@ -26,24 +25,21 @@ const RandomTweetsContainer = () => {
     }, []);
 
     useEffect(() => {
-        //TESTING use user selected to fetch random tweet.
         if(!userSelected) return;
 
         setShowModal(true);
+
         fetchRandomTweetByUser(userSelected.screenName)
         .then(response => {
-            debugger;
-            console.log(response);
-        });
-        // fetchData(1).then(response => {
-        //     setRandomTweet(response[0]);
-        // });
-    }, [userSelected]);
+            setRandomTweet(response);
+        }).catch(err => console.log(err));
+    }, userSelected);
 
     useEffect(() => {
         if(showModal) return;
 
-        setRandomTweet(null); //reset tweet selected.
+        setRandomTweet(null);
+        setUserSelected(null);
 
     }, [showModal]);
     

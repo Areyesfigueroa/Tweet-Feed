@@ -64,7 +64,7 @@ exports.searchUserProfiles = (request, response) => {
 //TODO: Cache
 exports.searchRandomTweetByUser = (request, response) => {
     const data = request.params;
-    const maxCount = 100;
+    const maxCount = 10;
 
     axios.get(`/1.1/statuses/user_timeline.json?screen_name=${data.screenName}&count=${maxCount.toString()}&tweet_mode=extended`)
     .then(res => {
