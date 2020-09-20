@@ -1,5 +1,7 @@
 const axios = require('../axios').getInstance();
-const tweetParser = require('../tweetParser');
+const tweetParser = require('../parsers/tweetParser');
+const profileParser = require('../parsers/profileParser');
+const utils = require('../utils');
 
 const parseUserData = (data) => {
     const continueFromID = data[data.length - 1].id;
@@ -20,6 +22,15 @@ exports.searchByUserRaw = (request, response) => {
     }).catch((error) => response.json({error, message: "Data fetch failed"}));
 }
 
+exports.searchUserProfilesRaw = (request, response) => {
+    const data = request.params;
+
+    axios.get(`/1.1/users/lookup.json?screen_name=${data.screenNames}`)
+    .then(res => {
+        response.json(res.data);
+    }).catch((error) => response.json({error, message: "Data fetch failed"}));
+}
+
 //Get filtered data
 exports.searchByUser = (request, response) => {
     const data = request.params;
@@ -27,7 +38,8 @@ exports.searchByUser = (request, response) => {
 
     axios.get(`/1.1/statuses/user_timeline.json?screen_name=${data.screenName}&count=${newCount}&tweet_mode=extended`)
     .then(res => {
-        response.json(parseUserData(res.data));
+        const parsedData = parseUserData(res.data);
+        response.json(parsedData);
     }).catch((error) => response.json({error, message: "Data fetch failed"}));
 }
 
@@ -43,8 +55,21 @@ exports.searchByUserNextResults = (request, response) => {
 exports.searchUserProfiles = (request, response) => {
     const data = request.params;
 
-    axios.get(`/1.1/users/lookup.json?screen_name=${data.screenNames.join(',')}`)
+    axios.get(`/1.1/users/lookup.json?screen_name=${data.screenNames}`)
     .then(res => {
-        response.json(res.data);
+        response.json(profileParser.formatProfiles(res.data));
+    }).catch((error) => response.json({error, message: "Data fetch failed"}));
+}
+
+//TODO: Cache
+exports.searchRandomTweetByUser = (request, response) => {
+    const data = request.params;
+    const maxCount = 100;
+
+    axios.get(`/1.1/statuses/user_timeline.json?screen_name=${data.screenName}&count=${maxCount.toString()}&tweet_mode=extended`)
+    .then(res => {
+        const randomIdx = utils.getRandomInt(maxCount - 1);
+        const tweet = tweetParser.formatTweetData(res.data[randomIdx]);
+        response.json(tweet);
     }).catch((error) => response.json({error, message: "Data fetch failed"}));
 }

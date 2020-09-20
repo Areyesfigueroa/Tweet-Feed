@@ -54,6 +54,20 @@ const fetchUserProfiles = (userScreenNames) => {
     .catch(error => console.log("API Error"));
 }
 
+const fetchRandomTweetByUser = (screenName) => {
+    return fetch(`/api/search/user/randomTweet/${screenName}`)
+    .then(res => res.json(res))
+    .catch(error => console.log("API Error"));
+}
 
 
-export { fetchData, fetchContentTweets, fetchUserTweets, fetchContentNextResults, fetchUserNextResults, fetchUserProfiles };
+
+export { 
+    fetchData, 
+    fetchContentTweets, 
+    fetchUserTweets, 
+    fetchContentNextResults, 
+    fetchUserNextResults, 
+    fetchUserProfiles, 
+    fetchRandomTweetByUser
+};

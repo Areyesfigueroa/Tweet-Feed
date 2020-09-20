@@ -8,3 +8,7 @@ String.prototype.replaceAll = function(substr, newSubstr) {
 
     return this.replace(re, newSubstr);
 }
+
+exports.getRandomInt = (max) => {
+    return Math.floor(Math.random() * Math.floor(max));
+}

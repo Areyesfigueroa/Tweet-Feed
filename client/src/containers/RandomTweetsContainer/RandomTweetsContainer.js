@@ -1,14 +1,12 @@
 import React, { useEffect, useState, Fragment } from 'react';
+
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
 import Button from '../../components/Button/Button';
-
-import { fetchData } from '../../https';
-import { fetchUserTweets } from '../../https';
-
-
 import ModalContainer from '../ModalContainer/ModalContainer';
 import UserProfileCardsLayout from '../../components/UserProfileCardsLayout/UserProfileCardsLayout';
 import Title from '../../components/Title/Title';
+
+import { fetchUserProfiles, fetchData, fetchRandomTweetByUser } from '../../https';
 
 const RandomTweetsContainer = () => {
 
@@ -20,12 +18,11 @@ const RandomTweetsContainer = () => {
 
     useEffect(() => {
 
-
-        setUsers(['spiderman, marvel, playstation, insomniac, rockstar']);
-        // fetchData(5).then(response => {
-        //     setUsers(response);
-        //     setLoading(false);
-        // });
+        const profiles = ['spiderman, marvel, playstation, insomniac, jlo'];
+        fetchUserProfiles(profiles).then(response => {
+            setUsers(response);
+            setLoading(false);
+        }).catch(err => console.log(err));
     }, []);
 
     useEffect(() => {
@@ -33,12 +30,14 @@ const RandomTweetsContainer = () => {
         if(!userSelected) return;
 
         setShowModal(true);
-        // fetchRandomTweet.then(response => {
-        //     console.log(response);
-        // });
-        fetchData(1).then(response => {
-            setRandomTweet(response[0]);
+        fetchRandomTweetByUser(userSelected.screenName)
+        .then(response => {
+            debugger;
+            console.log(response);
         });
+        // fetchData(1).then(response => {
+        //     setRandomTweet(response[0]);
+        // });
     }, [userSelected]);
 
     useEffect(() => {
@@ -49,7 +48,7 @@ const RandomTweetsContainer = () => {
     }, [showModal]);
     
     const handleCardSelection = (id) => {
-        setUserSelected(users.filter((user) => user.id === id));
+        setUserSelected(users.filter((user) => user.id === id)[0]);
     };
 
     const handleRandomSelection = () => handleCardSelection(Math.floor((Math.random() * 5) + 0));

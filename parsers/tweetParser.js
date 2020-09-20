@@ -1,4 +1,4 @@
-require("./utils");
+require("../utils");
 const date = require('date-and-time');
 
 // const fakeData = {
@@ -307,8 +307,13 @@ const appendVideo = (text, url) => {
 }
 
 const toHTML = (data) => {
-    let newContent = data.full_text;
-
+    let newContent = '';
+    if(data.retweeted_status) {
+        newContent = data.retweeted_status.full_text;
+    } else {
+        newContent = data.full_text;
+    }
+    
     //@ Symbols
     data.entities.user_mentions.forEach((el) => {
         newContent = parseAtSymbols(newContent, el.screen_name);
@@ -340,25 +345,31 @@ const toHTML = (data) => {
     return html;
 }
 
-exports.formatTweetsData = (data) => {
+const formatTweetsData = (data) => {
     return data.map((el) => {
-
-        const dateObj = new Date(el.created_at);
-
-        const formattedDate = date.format(dateObj, "M/D/YYYY");
-        const formattedTime = date.format(dateObj, 'hh:mm A');
-
-        return {
-            id: el.id,
-            name: el.user.name, 
-            screenName: `@${el.user.screen_name}`, 
-            profileImg: el.user.profile_image_url_https, 
-            content: toHTML(el),
-            hearts: el.favorite_count,
-            retweets: el.retweet_count, 
-            date: formattedDate, 
-            time: formattedTime, 
-            location: el.user.location ? el.user.location: 'N/A' 
-        }
+        return formatTweetData(el);
     });
 }
+
+const formatTweetData = (data) => {
+    const dateObj = new Date(data.created_at);
+
+    const formattedDate = date.format(dateObj, "M/D/YYYY");
+    const formattedTime = date.format(dateObj, 'hh:mm A');
+
+    return {
+        id: data.id,
+        name: data.user.name, 
+        screenName: `@${data.user.screen_name}`, 
+        profileImg: data.user.profile_image_url_https, 
+        content: toHTML(data),
+        hearts: data.favorite_count,
+        retweets: data.retweet_count, 
+        date: formattedDate, 
+        time: formattedTime, 
+        location: data.user.location ? data.user.location: 'N/A' 
+    }
+}
+
+exports.formatTweetsData = formatTweetsData;
+exports.formatTweetData = formatTweetData;

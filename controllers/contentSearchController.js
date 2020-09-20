@@ -1,5 +1,5 @@
 const axios = require('../axios').getInstance();
-const tweetParser = require('../tweetParser');
+const tweetParser = require('../parsers/tweetParser');
 
 //Helper Functions
 const parseContentData = (data) => {

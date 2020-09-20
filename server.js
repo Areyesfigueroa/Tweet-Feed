@@ -13,8 +13,6 @@ app.use(bodyParser.json()); //what does this do?
 app.use('/', express.static(path.join(__dirname + "/client/build")));
 
 //Twitter.
-// const searchRoute = require('./routes/searchRoutes');
-// app.use("/api/search", searchRoute);
 const contentSearchRoute = require('./routes/contentSearchRoutes');
 app.use("/api/search", contentSearchRoute);
 
