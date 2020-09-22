@@ -3,7 +3,7 @@ const router = express.Router();
 
 const userSearchController = require("../controllers/userSearchController");
 
-router.get('/user/raw/:screenName/:count', userSearchController.searchByUserRaw);
+router.get('/user/tweets/raw/:screenName/:count', userSearchController.searchByUserRaw);
 router.get('/user/profiles/raw/:screenNames', userSearchController.searchUserProfilesRaw);
 
 router.get('/user/tweets/:screenName/:count', userSearchController.searchByUser); 
