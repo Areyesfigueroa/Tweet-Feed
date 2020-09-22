@@ -47,7 +47,10 @@ const RandomTweetsContainer = () => {
         setUserSelected(users.filter((user) => user.id === id)[0]);
     };
 
-    const handleRandomSelection = () => handleCardSelection(Math.floor((Math.random() * 5) + 0));
+    const handleRandomSelection = () => {
+        const randomIdx = Math.floor((Math.random() * 5) + 0);
+        setUserSelected(users[randomIdx]);
+    };
 
     return (
         <div style={{margin: 'var(--pageMargin)'}}>
