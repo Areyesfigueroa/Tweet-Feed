@@ -8,8 +8,10 @@ import fullLogo from '../../assets/images/full-logo.png';
 const splashPage = () => {
     return (
         <div className={classes.SplashPage}>
-            <div style={{margin: 'var(--pageMargin)'}}>
-                <Image src={fullLogo} alt={"Logo"} />
+            <div className={classes.container}>
+                <div>
+                    <Image src={fullLogo} alt={"Logo"} />
+                </div>
                 <Title>
                     <p>This web app utilizes the Twitter API to fetch user tweets and present them in different ways.</p>
                     <p>Use the user search feature to search through your favorite user tweets or search by your favorite Twitter topic.</p>

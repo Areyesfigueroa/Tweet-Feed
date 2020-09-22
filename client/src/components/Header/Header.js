@@ -18,7 +18,7 @@ const header = (props) => {
         <div className={classes.Header}>
             <Navbar collapseOnSelect style={props.style} expand="lg" variant="dark">
                 <NavigationItem link="/home" style={{margin: '0'}}>
-                    <Image rounded src={logo} alt="logo"/>
+                    <Image rounded fluid src={logo} alt="logo"/>
                 </NavigationItem>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" style={hamburgerBtnStyle}/>
                 <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end">

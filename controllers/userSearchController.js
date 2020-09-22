@@ -62,14 +62,25 @@ exports.searchUserProfiles = (request, response) => {
 }
 
 //TODO: Cache
+let randomTweetsCache = new Map();
 exports.searchRandomTweetByUser = (request, response) => {
     const data = request.params;
     const maxCount = 10;
 
-    axios.get(`/1.1/statuses/user_timeline.json?screen_name=${data.screenName}&count=${maxCount.toString()}&tweet_mode=extended`)
-    .then(res => {
+    if(randomTweetsCache.has(data.screenName)) {
         const randomIdx = utils.getRandomInt(maxCount - 1);
-        const tweet = tweetParser.formatTweetData(res.data[randomIdx]);
+        const tweet = tweetParser.formatTweetData(randomTweetsCache.get(data.screenName)[randomIdx]);
+        console.log("Cached");
         response.json(tweet);
-    }).catch((error) => response.json({error, message: "Data fetch failed"}));
+    } else {
+        axios.get(`/1.1/statuses/user_timeline.json?screen_name=${data.screenName}&count=${maxCount.toString()}&tweet_mode=extended`)
+        .then(res => {
+            randomTweetsCache.set(data.screenName, res.data);
+            console.log("No Cache");
+
+            const randomIdx = utils.getRandomInt(maxCount - 1);
+            const tweet = tweetParser.formatTweetData(res.data[randomIdx]);
+            response.json(tweet);
+        }).catch((error) => response.json({error, message: "Data fetch failed"}));
+    }
 }

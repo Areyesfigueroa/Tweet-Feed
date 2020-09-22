@@ -6,7 +6,9 @@ import Title from '../../components/Title/Title';
 
 // TESTING
 import TwitterCards from '../../components/TwitterCards/TwitterCards';
-import { fetchContentNextResults, fetchUserNextResults } from '../../https';
+import { fetchContentTweets, fetchContentNextResults, fetchUserNextResults } from '../../https';
+
+let initialCache = null;
 
 const UserSearchContainer = () => {
 
@@ -14,7 +16,7 @@ const UserSearchContainer = () => {
     const [searchType, setSearchType]=useState('');
     const [nextResultsURL, setNextResultsURL]=useState(null);
     const [showStatusLog, setShowStatusLog]=useState(false);
-    const [loading, setLoading]=useState(false);
+    const [loading, setLoading]=useState(true);
     const [bottomReached, setBottomReached]=useState(false);
     
     const SEARCH_TYPES = {
@@ -23,8 +25,20 @@ const UserSearchContainer = () => {
     }
 
     useEffect(() => {
+        
+        if(initialCache) {
+            handleSearch(initialCache, SEARCH_TYPES.CONTENT); //Pass in the search results
+        } else {
+            fetchContentTweets("Spiderman")
+            .then(res => {
+                handleSearch(res, SEARCH_TYPES.CONTENT); //Pass in the search results
+                initialCache = res;
+                setLoading(false);
+            })
+            .catch(error => console.log("Search by user Error"));
+        }
+        
         window.addEventListener("scroll", onBottomReached);
-
         return function cleanup() {
             window.removeEventListener("scroll", onBottomReached);
         }

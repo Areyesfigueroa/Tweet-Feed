@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Fragment } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
 import Button from '../../components/Button/Button';
@@ -7,6 +7,8 @@ import UserProfileCardsLayout from '../../components/UserProfileCardsLayout/User
 import Title from '../../components/Title/Title';
 
 import { fetchUserProfiles, fetchRandomTweetByUser } from '../../https';
+
+let initialCache = null;
 
 const RandomTweetsContainer = () => {
 
@@ -17,11 +19,19 @@ const RandomTweetsContainer = () => {
     const [showModal, setShowModal] = useState(false);
 
     useEffect(() => {
-        const profiles = ['spiderman, marvel, playstation, funhaus, jlo'];
-        fetchUserProfiles(profiles).then(response => {
-            setUsers(response);
+        const profiles = ['spiderman', 'Playstation', 'IGN', 'reactjs', 'traversymedia'];
+        if(profiles.length !== 5) return;
+
+        if(initialCache) {
+            setUsers(initialCache);
             setLoading(false);
-        }).catch(err => console.log(err));
+        } else {
+            fetchUserProfiles(profiles).then(response => {
+                initialCache = response;
+                setUsers(response);
+                setLoading(false);
+            }).catch(err => console.log(err));
+        }
     }, []);
 
     useEffect(() => {
@@ -33,7 +43,7 @@ const RandomTweetsContainer = () => {
         .then(response => {
             setRandomTweet(response);
         }).catch(err => console.log(err));
-    }, userSelected);
+    }, [userSelected]);
 
     useEffect(() => {
         if(showModal) return;
