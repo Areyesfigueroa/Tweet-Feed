@@ -7,6 +7,8 @@ const userProfileCard = (props) => {
         <div className={classes.UserProfileCard}>
             <div>
                 <Image src={props.img} alt="Profile" roundedCircle fluid/>
+                <p>{props.name}</p>
+                <p>{`@${props.screenName}`}</p>
             </div>
         </div>
     );

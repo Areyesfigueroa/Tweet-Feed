@@ -33,10 +33,17 @@
     border-radius: 50%;
 }
 
+.profile:hover,
+.profile:active,
+.profile:visited {
+    background-color: var(--lightGreen);
+    border: 1px solid var(--lightGreen);
+}
+
 .profile {
-    background-color: rgba(1,1,1,0);
-    border: none;
-    color: black;
+    border: 1px solid var(--darkWhite);
+    color: var(--darkWhite);
+    margin: 10px;
 }
 
 .rounded {

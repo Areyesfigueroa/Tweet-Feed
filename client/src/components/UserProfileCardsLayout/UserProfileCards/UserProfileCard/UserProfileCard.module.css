@@ -4,7 +4,9 @@
     justify-self: center;
     align-items: center;
     padding: 10px;
-    max-width: 200px;
+    width: 200px;
+    color: black;
+    margin: 10px;
 }
 
 .UserProfileCard div {
@@ -14,4 +16,9 @@
 .UserProfileCard img {
     width: 50px;
     height: 50px;
+}
+
+.UserProfileCard p {
+    margin: 0;
+    padding: 5px;
 }

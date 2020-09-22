@@ -7,8 +7,8 @@ const userProfileCards = (props) => {
     return (
         <div className={classes.UserProfileCards}>
             {props.data.map((el) => (
-                <Button key={el.id} click={() => props.click(el.id)} variant="profile">
-                    <UserProfileCard img={el.profileImg} name={el.name} />
+                <Button key={el.id} click={() => props.click(el.id)} variant="profile" rounded>
+                    <UserProfileCard img={el.profileImg} name={el.name} screenName={el.screenName}/>
                 </Button>
             ))}
         </div>
