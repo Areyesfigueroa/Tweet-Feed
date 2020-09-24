@@ -4,8 +4,11 @@ Try it out! [Application Link](https://areyesfigueroa.github.io/SnakeGame/)
 
 The application utilizes twitter and an internal api to fetch and display filtered tweets.
 
+###### Home Page
 ![Home Page](./assets/home.png)
+###### Search Tweets Page
 ![Search Tweets Page](./assets/search.png)
+###### Random Tweets Page
 ![Random Tweets Page](./assets/random.png)
 
 ## Description
