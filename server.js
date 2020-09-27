@@ -19,5 +19,5 @@ app.use("/api/search", contentSearchRoute);
 const userSearchRoute = require('./routes/userSearchRoutes');
 app.use("/api/search", userSearchRoute);
 
-const port = 5000;
+const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Server started on port ${port}`));

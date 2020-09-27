@@ -10,9 +10,6 @@ import SplashPage from './components/SplashPage/SplashPage';
 import UserSearchContainer from './containers/UserSearchContainer/UserSearchContainer';
 import RandomTweetsContainer from './containers/RandomTweetsContainer/RandomTweetsContainer';
 
-//TESTING
-import { fetchSearch } from './fakeData';
-
 function App() {
 
   return (
