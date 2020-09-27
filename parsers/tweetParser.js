@@ -7,7 +7,7 @@ const parseAtSymbols = (text, screenName) => {
     if (text.includes(`>@${screenName}<`)) return text; //needs to be case insesitive.
 
     const url = `https://twitter.com/${screenName}`;
-    const html = `<a href=${url}>@${screenName}</a>`;
+    const html = `<a href=${url} target='_blank'>@${screenName}</a>`;
 
     return text.replaceAll(`@${screenName}`, html);
 }
@@ -16,14 +16,14 @@ const parseHashtags = (text, tag) => {
     if (text.includes(`>#${tag}<`)) return text;
 
     const url = `https://twitter.com/hashtag/${tag}?src=hashtag_click`;
-    const html = `<a href=${url}>#${tag}</a>`;
+    const html = `<a href=${url} target='_blank'>#${tag}</a>`;
 
     return text.replaceAll(`#${tag}`, html);
 }
 const parseURLs = (text, url) => {
     if (text.includes(`>${url}<`)) return text;
 
-    const html = `<a href=${url}>${url}</a>`;
+    const html = `<a href=${url} target='_blank'>${url}</a>`;
     return text.replaceAll(url, html);
 }
 const parseImgs = (text, displayedURL, url) => {

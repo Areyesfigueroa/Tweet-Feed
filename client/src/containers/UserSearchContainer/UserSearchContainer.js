@@ -40,7 +40,6 @@ const UserSearchContainer = () => {
     useEffect(() => {
         if(!bottomReached) return;
 
-        console.log("Search Next results");
         switch(searchType) {
             case SEARCH_TYPES.CONTENT:
                 setLoading(true);
@@ -66,9 +65,7 @@ const UserSearchContainer = () => {
     }
 
     const handleNextResults = (response) => {
-        console.log(response);
         if(response.error) {
-            // debugger;
             setShowStatusLog(true);
             setLoading(false);
         } else {
