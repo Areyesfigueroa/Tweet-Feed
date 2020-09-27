@@ -8,7 +8,9 @@ const profile = (props) => {
             <Image src={props.img} alt="Profile" roundedCircle fluid/>
             <div className={classes.profileText}>
                 <div>{props.name}</div>
-                <div>{props.url}</div>
+                <div>
+                    <a href={`https://twitter.com/${props.url}`} target="_blank">{props.url}</a>
+                </div>
             </div>
         </div>
     );

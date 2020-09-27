@@ -12,14 +12,6 @@ const parseUserData = (data) => {
     return {tweets, nextResultsURL};
 }
 
-//TODO: Delete this before official build.
-exports.testing = (request, response) => {
-    const data = request.params;
-    data.comment = "URL WORKING";
-    data.twitterURL = axios.defaults;
-    response.json(data);
-}
-
 //Get Unfiltered/UnParsed data. TESTING purporses.
 exports.searchByUserRaw = (request, response) => {
     const data = request.params;

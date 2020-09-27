@@ -8,8 +8,6 @@ import Title from '../../components/Title/Title';
 import TwitterCards from '../../components/TwitterCards/TwitterCards';
 import { fetchContentTweets, fetchContentNextResults, fetchUserNextResults } from '../../https';
 
-let initialCache = null;
-
 const UserSearchContainer = () => {
 
     const [data, setData]=useState([]);
@@ -26,17 +24,12 @@ const UserSearchContainer = () => {
 
     useEffect(() => {
         
-        if(initialCache) {
-            handleSearch(initialCache, SEARCH_TYPES.CONTENT); //Pass in the search results
-        } else {
-            fetchContentTweets("Spiderman")
-            .then(res => {
-                handleSearch(res, SEARCH_TYPES.CONTENT); //Pass in the search results
-                initialCache = res;
-                setLoading(false);
-            })
-            .catch(error => console.log("Search by user Error"));
-        }
+        fetchContentTweets("Spiderman")
+        .then(res => {
+            handleSearch(res, SEARCH_TYPES.CONTENT); //Pass in the search results
+            setLoading(false);
+        })
+        .catch(error => console.log("Search by user Error, " + error));
         
         window.addEventListener("scroll", onBottomReached);
         return function cleanup() {
@@ -68,7 +61,6 @@ const UserSearchContainer = () => {
 
     const onBottomReached = () => {
         if((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-            console.log("Bottom Reached");
             setBottomReached(true);
         }
     }
