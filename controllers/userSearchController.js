@@ -1,3 +1,4 @@
+require('../axios');
 const axios = require('../axios').getInstance();
 const tweetParser = require('../parsers/tweetParser');
 const profileParser = require('../parsers/profileParser');
