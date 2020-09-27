@@ -37,6 +37,7 @@ if(instance.defaults.headers.common['Authorization']) {
 }
 
 const getInstance = () => {
+    console.log("getting instance");
     return instance;
 }
 

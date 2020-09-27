@@ -16,6 +16,7 @@ const parseUserData = (data) => {
 exports.testing = (request, response) => {
     const data = request.params;
     data.comment = "URL WORKING";
+    data.twitterURL = axios.defaults;
     response.json(data);
 }
 
