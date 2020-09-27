@@ -11,6 +11,9 @@ router.get('/user/nextTweets/:nextResultsURL', userSearchController.searchByUser
 router.get('/user/profiles/:screenNames', userSearchController.searchUserProfiles);
 router.get('/user/randomTweet/:screenName', userSearchController.searchRandomTweetByUser);
 
+//TODO: Delete
+router.get("/user/test/:count", userSearchController.testing);
+
 module.exports = router;
 
 

@@ -12,6 +12,13 @@ const parseUserData = (data) => {
     return {tweets, nextResultsURL};
 }
 
+//TODO: Delete this before official build.
+exports.testing = (request, response) => {
+    const data = request.params;
+    data.comment = "URL WORKING";
+    response.json(data);
+}
+
 //Get Unfiltered/UnParsed data. TESTING purporses.
 exports.searchByUserRaw = (request, response) => {
     const data = request.params;
@@ -61,7 +68,6 @@ exports.searchUserProfiles = (request, response) => {
     }).catch((error) => response.json({error, message: "Data fetch failed"}));
 }
 
-//TODO: Cache
 let randomTweetsCache = new Map();
 exports.searchRandomTweetByUser = (request, response) => {
     const data = request.params;
