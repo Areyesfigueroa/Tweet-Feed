@@ -38,9 +38,9 @@ const UserSearchContainer = () => {
     }, []);
 
     useEffect(() => {
+        if(!bottomReached) return;
 
-        if(loading || showStatusLog) return;
-
+        console.log("Search Next results");
         switch(searchType) {
             case SEARCH_TYPES.CONTENT:
                 setLoading(true);
@@ -66,19 +66,22 @@ const UserSearchContainer = () => {
     }
 
     const handleNextResults = (response) => {
+        console.log(response);
         if(response.error) {
+            // debugger;
             setShowStatusLog(true);
             setLoading(false);
-            return;
+        } else {
+            setShowStatusLog(false);
+    
+            let newData = [...data];
+            newData.push(...response.tweets.map((el) => el));
+    
+            setData(newData);
+            setNextResultsURL(response.nextResultsURL);
+            setBottomReached(false);
+            setLoading(false);
         }
-
-        let newData = [...data];
-        newData.push(...response.tweets.map((el) => el));
-
-        setData(newData);
-        setNextResultsURL(response.nextResultsURL);
-        setBottomReached(false);
-        setLoading(false);
     }
 
     const handleSearch = (data, searchType) => {
