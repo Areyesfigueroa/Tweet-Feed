@@ -1,3 +1,7 @@
+.Header {
+  background-color: var(--lightGreen);
+}
+
 .Header img {
     margin: auto 0;
     width: 50px;

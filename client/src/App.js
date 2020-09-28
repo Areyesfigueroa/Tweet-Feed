@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './App.css';
 
-import HeaderContainer from './containers/HeaderContainer/HeaderContainer';
+// import HeaderContainer from './containers/HeaderContainer/HeaderContainer';
+import Header from './components/Header/Header';
 import Background from './components/Background/Background';
 import splashBG from "./assets/images/splash-bg.jpg";
 
@@ -14,7 +15,7 @@ function App() {
 
   return (
     <div className="App">
-      <HeaderContainer />
+      <Header />
       <Background imgSrc={splashBG} shadowOpacity={0.1} style={{position: "fixed"}}/>
 
       <Switch>
