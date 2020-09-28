@@ -22,6 +22,7 @@ Working on this project has taught me a lot of how backend and frontend communic
 - HTML, CSS, JavaScript - Front End Stack
 - React - Front End Framework
 - Node.js and Express.js - Backend Stack
+- Heroku - Hosting Platform
 
 ###### Other Tools
 - Google's Draw.IO to help with initial project design and structure. [Diagram](https://drive.google.com/file/d/1fp8kN2SZyzLquBkoplWM_Ok0oyQqpofA/view?usp=sharing)
