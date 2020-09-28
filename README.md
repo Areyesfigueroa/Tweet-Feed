@@ -1,6 +1,6 @@
 # Tweet Feed
 
-Try it out! [Application Link](https://areyesfigueroa.github.io/SnakeGame/)
+Try it out! [Application Link](https://ar-tweet-feed.herokuapp.com/)
 
 The application utilizes twitter and an internal api to fetch and display filtered tweets.
 
