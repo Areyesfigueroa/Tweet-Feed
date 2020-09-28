@@ -13,12 +13,16 @@
     align-items: center;
     justify-content: center;
     margin: var(--pageMargin);
-    height: calc(100vh - 66px); /*Reduce by header height*/
+    height: 100%; 
+}
+
+.SplashPage .logoContainer {
+    max-width: 350px;
+    margin-top: 40px;
 }
 
 .SplashPage img {
-    width: auto;
-    height: 300px;
+    width: 100%;
 }
 
 .content {

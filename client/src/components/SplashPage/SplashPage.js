@@ -9,7 +9,7 @@ const splashPage = () => {
     return (
         <div className={classes.SplashPage}>
             <div className={classes.container}>
-                <div>
+                <div className={classes.logoContainer}>
                     <Image src={fullLogo} alt={"Logo"} />
                 </div>
                 <Title>
